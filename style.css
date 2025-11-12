@@ -7339,7 +7339,7 @@ img {
 
     .hero-container {
         flex-direction: column;
-        gap: 15px !important;
+        gap: 5px !important;
         text-align: center;
         padding: 0 20px !important;
     }
@@ -7347,38 +7347,45 @@ img {
     .hero-content {
         max-width: 100%;
         order: 2;
+        margin-top: 0 !important;
+        padding-top: 0 !important;
     }
 
     .hero-image {
         max-width: 250px;
         order: 1;
-        margin-bottom: 0;
+        margin-bottom: 0 !important;
     }
 
     .hero-title {
         text-align: center;
         font-size: 1.4rem !important;
-        margin-bottom: 0.6rem !important;
+        margin-bottom: 0.4rem !important;
+        margin-top: 0 !important;
+        padding-top: 0 !important;
     }
 
     .hero-subtitle {
         font-size: 0.85rem;
-        line-height: 1.6;
+        line-height: 1.5;
         text-align: center;
-        margin-bottom: 0.8rem !important;
+        margin-bottom: 0.5rem !important;
     }
 
     .hero-text {
-        gap: 0.5rem;
+        gap: 0.3rem;
         width: 100%;
+        margin-top: 0 !important;
+        padding-top: 0 !important;
     }
 
     .hero-buttons {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 0.7rem;
+        gap: 0.5rem;
         width: 100%;
+        margin-top: 0.3rem !important;
     }
     
     .hero-photo {
@@ -7409,38 +7416,44 @@ img {
     }
 
     .hero-container {
-        gap: 12px !important;
+        gap: 5px !important;
         padding: 0 15px !important;
     }
 
     .hero-image {
         max-width: 200px !important;
+        margin-bottom: 0 !important;
     }
 
     .hero-photo {
         max-width: 200px !important;
+        margin-bottom: 0 !important;
     }
 
     .hero-title {
         font-size: 1.2rem !important;
-        margin-bottom: 0.5rem !important;
+        margin-bottom: 0.3rem !important;
+        margin-top: 0 !important;
         padding: 0 5px !important;
     }
 
     .hero-subtitle {
         font-size: 0.8rem !important;
-        margin-bottom: 0.6rem !important;
+        margin-bottom: 0.4rem !important;
         padding: 0 5px;
     }
 
     .hero-text {
-        gap: 0.4rem;
+        gap: 0.25rem;
         width: 100%;
+        margin-top: 0 !important;
+        padding-top: 0 !important;
     }
 
     .hero-buttons {
-        gap: 0.6rem;
+        gap: 0.5rem;
         width: 100%;
+        margin-top: 0.2rem !important;
     }
 
     .btn {
