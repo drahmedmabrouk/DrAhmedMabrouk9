@@ -163,6 +163,49 @@
             if (e.key === 'ArrowLeft') prevImage();
         });
 
+        // Touch swipe navigation for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+        let touchStartY = 0;
+        let touchEndY = 0;
+        const minSwipeDistance = 50; // Minimum distance for a swipe
+
+        const lightboxContent = lightbox.querySelector('.lightbox-content');
+
+        lightboxContent.addEventListener('touchstart', function(e) {
+            if (!lightbox.classList.contains('active')) return;
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        lightboxContent.addEventListener('touchend', function(e) {
+            if (!lightbox.classList.contains('active')) return;
+            touchEndX = e.changedTouches[0].screenX;
+            touchEndY = e.changedTouches[0].screenY;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const swipeDistanceX = touchEndX - touchStartX;
+            const swipeDistanceY = touchEndY - touchStartY;
+            
+            // Check if horizontal swipe is more significant than vertical
+            if (Math.abs(swipeDistanceX) > Math.abs(swipeDistanceY)) {
+                // Horizontal swipe
+                if (Math.abs(swipeDistanceX) > minSwipeDistance) {
+                    if (swipeDistanceX > 0) {
+                        // Swipe right - show previous image
+                        console.log('Swipe right - previous image');
+                        prevImage();
+                    } else {
+                        // Swipe left - show next image
+                        console.log('Swipe left - next image');
+                        nextImage();
+                    }
+                }
+            }
+        }
+
         // Make images clickable with pointer cursor and add direct click listeners
         const carouselImages = document.querySelectorAll('.carousel-image');
         console.log('Found', carouselImages.length, 'carousel images');
