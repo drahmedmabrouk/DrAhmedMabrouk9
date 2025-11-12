@@ -206,24 +206,11 @@
             }
         }
 
-        // Make images clickable with pointer cursor and add direct click listeners
+        // Make images clickable with pointer cursor
         const carouselImages = document.querySelectorAll('.carousel-image');
         console.log('Found', carouselImages.length, 'carousel images');
-        carouselImages.forEach((img, index) => {
+        carouselImages.forEach(img => {
             img.style.cursor = 'pointer';
-            
-            // Add direct click listener as fallback
-            img.addEventListener('click', function(e) {
-                console.log('Direct click on image', index);
-                // Find the index of this specific image
-                const allCarouselImages = Array.from(document.querySelectorAll('.carousel-image'));
-                const actualIndex = allCarouselImages.indexOf(this);
-                
-                if (actualIndex !== -1 && window.openCertificateLightbox) {
-                    e.stopPropagation();
-                    window.openCertificateLightbox(actualIndex);
-                }
-            });
         });
     }
 
@@ -288,8 +275,8 @@
                 const currentPosition = getPositionX(e);
                 const distance = Math.abs(currentPosition - startPos);
                 
-                // Only consider it a drag if moved more than 10 pixels (increased for better click detection on mobile)
-                if (distance > 10) {
+                // Only consider it a drag if moved more than 5 pixels
+                if (distance > 5) {
                     hasMoved = true;
                     currentTranslate = prevTranslate + currentPosition - startPos;
                     track.style.transform = `translateX(${currentTranslate}px)`;
@@ -304,7 +291,6 @@
                 
                 // If there was no movement and clicked on an image, open lightbox
                 if (!hasMoved && clickTarget && clickTarget.classList.contains('carousel-image')) {
-                    e.preventDefault(); // Prevent default to ensure click is registered
                     console.log('Click on image detected - opening lightbox');
                     
                     // Find the index of the clicked image
@@ -314,10 +300,7 @@
                     console.log('Image index:', imageIndex, 'of', allCarouselImages.length);
                     
                     if (imageIndex !== -1 && window.openCertificateLightbox) {
-                        // Use setTimeout to ensure the event is fully processed
-                        setTimeout(() => {
-                            window.openCertificateLightbox(imageIndex);
-                        }, 10);
+                        window.openCertificateLightbox(imageIndex);
                     }
                 }
                 
